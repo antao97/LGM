@@ -1,4 +1,4 @@
-# LGM
+# Leaded Gradient Method (LGM)
 
 <p float="left">
     <img src="image/figure1.png" width="400"/>
@@ -9,6 +9,8 @@ This repository contains the PyTorch implementation for paper **Dynamics-aware A
 **Authors:** An Tao, Yueqi Duan, He Wang, Ziyi Wu, Pengliang Ji, Haowen Sun, Jie Zhou, Jiwen Lu
 
 [[arxiv]](https://arxiv.org/abs/2112.09428)
+
+In this paper, we investigate the dynamics-aware adversarial attack problem in deep neural networks. Most existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process. However, this assumption does not hold for many recently proposed networks, e.g. 3D sparse convolution network, which contains input-dependent execution to improve computational efficiency. It results in a serious issue of lagged gradient, making the learned attack at the current step ineffective due to the architecture changes afterward. To address this issue, we propose a Leaded Gradient Method (LGM) and show the significant effects of the lagged gradient. 
 
 If you find our work useful in your research, please consider citing:
 ```
