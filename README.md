@@ -1,7 +1,7 @@
 # Leaded Gradient Method (LGM)
 
 <p float="left">
-    <img src="image/figure1.png" width="400"/>
+    <img src="image/figure1.jpg" width="600"/>
 </p>
 
 This repository contains the PyTorch implementation for paper **Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network**
@@ -24,4 +24,12 @@ If you find our work useful in your research, please consider citing:
 
 &nbsp;
 
-The code will be released soon.
+**Updates:** 
+
+- [2022/5/20] Add indoor scene code for semantic segmentation.
+
+&nbsp;
+
+## Contents
+
+- [Indoor Scene](indoor_scene/)
