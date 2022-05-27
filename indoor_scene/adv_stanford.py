@@ -271,6 +271,7 @@ for i, room_name in enumerate(all_rooms):
                 data,
                 config,
                 coords_pcl=coords_pcl,
+                coords_pcl0=coords_pcl0,
                 labels_pcl=labels_pcl,
                 dataset='stanford')
 

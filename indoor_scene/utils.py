@@ -162,7 +162,7 @@ def load_file_eval(file_name, voxel_size, attacked_coords, dataset='scannet'):
     return inverse_idx, coords_vox, feats_vox, labels_pcl
 
 
-def generate_input_sparse_tensor(file_name, config, coords_pcl=None, labels_pcl=None, extend=True, dataset='scannet'):
+def generate_input_sparse_tensor(file_name, config, coords_pcl=None, coords_pcl0=None, labels_pcl=None, extend=True, dataset='scannet'):
     """
     Obtain sparse tensor for input
     """
@@ -174,7 +174,7 @@ def generate_input_sparse_tensor(file_name, config, coords_pcl=None, labels_pcl=
     if extend:
         coords_pcl.requires_grad_(True).retain_grad()
         feats_pcl = torch.from_numpy(feats_pcl[0])
-        sinput, occupy_conv, valid = add_occupancy(config, inverse_idx, coords_vox[:,1:], coords_pcl, feats_pcl, dataset)
+        sinput, occupy_conv, valid = add_occupancy(config, inverse_idx, coords_vox[:,1:], coords_pcl, coords_pcl0, feats_pcl, dataset)
         return idx[0], inverse_idx[0], coords_vox, coords_pcl, sinput, occupy_conv, valid
     else:
         sinput = ME.SparseTensor(feats_vox.float(), coords=coords_vox)
@@ -195,7 +195,7 @@ def generate_input_sparse_tensor_eval(file_name, voxel_size=0.02, attacked_coord
     return inverse_idx, coordinates, features.float(), labels[0]
 
 
-def add_occupancy(config, inverse_idx, coords_vox_noextend, coords_pcl, feats_pcl, dataset='scannet'):
+def add_occupancy(config, inverse_idx, coords_vox_noextend, coords_pcl, coords_pcl0, feats_pcl, dataset='scannet'):
     """
     Obtain occupancy values for input voxelization and sparse convolution
     """
@@ -224,9 +224,16 @@ def add_occupancy(config, inverse_idx, coords_vox_noextend, coords_pcl, feats_pc
                     valid.append(torch.arange(coords_pcl.shape[0]))     
                     coords_vox_all.append(torch.floor(coords_pcl / config.voxel_size))
                 else:
-                    # Examine neighbor voxels
+                    # Examine neighbor voxels whether in step size
                     coords_vox_new = torch.floor((coords_pcl + torch.Tensor([dx, dy, dz]) * config.step) / config.voxel_size)
-                    valid.append(torch.where(~((torch.stack(coords_vox_all) - coords_vox_new).abs().sum(-1) == 0).sum(0).bool())[0])
+                    valid_new1 = torch.where(~((torch.stack(coords_vox_all) - coords_vox_new).abs().sum(-1) == 0).sum(0).bool())[0]
+                    
+                    # Examine neighbor voxels whether in budget
+                    idx1 = torch.where((torch.abs(coords_vox_new[valid_new1] * config.voxel_size - coords_pcl0[valid_new1]) < config.budget).sum(1).bool())[0]
+                    idx2 = torch.where((torch.abs(coords_vox_new[valid_new1] * config.voxel_size + config.voxel_size - coords_pcl0[valid_new1]) < config.budget).sum(1).bool())[0]
+                    idx = torch.unique(torch.cat([idx1, idx2]))
+                    valid_new2 = valid_new1[idx]
+                    valid.append(valid_new2)
                     coords_vox_all.append(coords_vox_new)
                 coords_vox.append(coords_vox_all[i][valid[i]])
                 i = i + 1

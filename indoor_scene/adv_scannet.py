@@ -226,6 +226,7 @@ for i, room_name in enumerate(all_rooms):
             if iter == 0:
                 labels_pcl = utils.convert_label_scannet(labels_pcl)
                 coords_pcl0 = coords_pcl.clone()
+                coords_pcl_list = [coords_pcl0[1].unsqueeze(0)]
 
             sinput_orig = sinput_orig.to(device)
             soutput_orig = model(sinput_orig)
@@ -253,6 +254,7 @@ for i, room_name in enumerate(all_rooms):
                 if config.save_probs:
                     probs_pcl_orig_best = probs_pcl_orig
                 coords_pcl_best = coords_pcl.clone()
+                iter_best = iter - 1
 
             torch.cuda.empty_cache()
 
@@ -266,6 +268,7 @@ for i, room_name in enumerate(all_rooms):
                 data,
                 config,
                 coords_pcl=coords_pcl,
+                coords_pcl0=coords_pcl0,
                 labels_pcl=labels_pcl,
                 dataset='scannet')
 
@@ -306,7 +309,7 @@ for i, room_name in enumerate(all_rooms):
                     soutput = new_model_2(interm)
 
             else:
-                soutput = new_model(sinput, idx.shape[0], occupy_conv)
+                soutput = new_model(sinput, idx.shape[1], occupy_conv)
         else:
             soutput = model(sinput)
         
@@ -335,6 +338,8 @@ for i, room_name in enumerate(all_rooms):
             coords_pcl = torch.where(coords_pcl < (coords_pcl0 - config.budget), coords_pcl0 - config.budget, coords_pcl)
             coords_pcl = torch.where(coords_pcl > (coords_pcl0 + config.budget), coords_pcl0 + config.budget, coords_pcl)
 
+            coords_pcl_list.append(coords_pcl[1].clone().unsqueeze(0))
+
         torch.cuda.empty_cache()
 
     
@@ -342,6 +347,8 @@ for i, room_name in enumerate(all_rooms):
     if load_attacked_coords:
         io.cprint('=> Resume Room: {:>3}/{:>3}  Attacked mIoU: [Original Conv] {:.4F}\n'.format(i, room_num, mIoU_orig_best))
     else:
+        print(torch.cat(coords_pcl_list, dim=0))
+        print('Best iter:' + str(iter_best))
         io.cprint('=> Attack Finished!  mIoU: [Original Conv] {:.4F} -> {:.4F}\n'.format(mIoU_orig0, mIoU_orig_best))
 
     # Save results
