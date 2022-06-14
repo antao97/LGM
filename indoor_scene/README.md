@@ -67,9 +67,9 @@ If the attack budget lies in [0.005, 0.01, 0.02, 0.05], our script default loads
 - `--default_para` Whether to use default attack parameters for budget that lies in [0.005, 0.01, 0.02, 0.05]. Default is `True`.
 - `--iter_num <num>` The iteration numer for attack.
 - `--step <size>` The step size for each attack step.
-- `--lamda_input` This parameter controls the slop of the sigmoid-like function in input voxelization.
-- `--lamda_conv` This parameter controls the slop of the sigmoid-like function in the occupancy value in sparse convolution.
-- `--lamda_output` This parameter controls the slop of the sigmoid-like function in output devoxelization.
+- `--lamda_input <value>` This parameter controls the slop of the sigmoid-like function in input voxelization.
+- `--lamda_conv <value>` This parameter controls the slop of the sigmoid-like function in the occupancy value in sparse convolution.
+- `--lamda_output <value>` This parameter controls the slop of the sigmoid-like function in output devoxelization.
 
 ### Evaluation
 
@@ -154,10 +154,10 @@ If the attack budget lies in [0.005, 0.01, 0.02, 0.05], our script default loads
 - `--default_para` Whether to use default attack parameters for budget that lies in [0.005, 0.01, 0.02, 0.05]. Default is `True`.
 - `--iter_num <num>` The iteration numer for attack.
 - `--step <size>` The step size for each attack step.
-- `--lamda_input` This parameter controls the slop of the sigmoid-like function in input voxelization.
-- `--lamda_conv` This parameter controls the slop of the sigmoid-like function in the occupancy value in sparse convolution.
-- `--lamda_output` This parameter controls the slop of the sigmoid-like function in output devoxelization.
-- `--lamda_floor` This parameter controls the slop of the sigmoid-like function to mimic the floor function.
+- `--lamda_input <value>` This parameter controls the slop of the sigmoid-like function in input voxelization.
+- `--lamda_conv <value>` This parameter controls the slop of the sigmoid-like function in the occupancy value in sparse convolution.
+- `--lamda_output <value>` This parameter controls the slop of the sigmoid-like function in output devoxelization.
+- `--lamda_floor <value>` This parameter controls the slop of the sigmoid-like function to mimic the floor function.
 
 ### Evaluation
 

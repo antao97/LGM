@@ -68,9 +68,9 @@ python adv_scannet.py --data_path <data path> --budget <budget>
 - `--default_para` 当攻击的最大攻击幅度是列表[0.005, 0.01, 0.02, 0.05]中的一个，是否使用默认攻击参数，默认是`True`。
 - `--iter_num <num>` 攻击迭代数量。
 - `--step <size>` 攻击步长。
-- `--lamda_input` 本参数控制在模型输入体素化（voxelization）处S形函数（sigmoid-like function）的斜度。
-- `--lamda_conv` 本参数控制在稀疏卷积的占用值（occupancy value）处S形函数（sigmoid-like function）的斜度。
-- `--lamda_output` 本参数控制在模型输出反体素化（devoxelization）处S形函数（sigmoid-like function）的斜度。
+- `--lamda_input <value>` 本参数控制在模型输入体素化（voxelization）处S形函数（sigmoid-like function）的斜度。
+- `--lamda_conv <value>` 本参数控制在稀疏卷积的占用值（occupancy value）处S形函数（sigmoid-like function）的斜度。
+- `--lamda_output <value>` 本参数控制在模型输出反体素化（devoxelization）处S形函数（sigmoid-like function）的斜度。
 
 ### 评估
 
@@ -154,10 +154,10 @@ python adv_stanford.py --data_path <data path> --budget <budget>
 - `--default_para` 当攻击的最大攻击幅度是列表[0.005, 0.01, 0.02, 0.05]中的一个，是否使用默认攻击参数，默认是`True`。
 - `--iter_num <num>` 攻击迭代数量。
 - `--step <size>` 攻击步长。
-- `--lamda_input` 本参数控制在模型输入体素化（voxelization）处S形函数（sigmoid-like function）的斜度。
-- `--lamda_conv` 本参数控制在稀疏卷积的占用值（occupancy value）处S形函数（sigmoid-like function）的斜度。
-- `--lamda_output` 本参数控制在模型输出反体素化（devoxelization）处S形函数（sigmoid-like function）的斜度。
-- `--lamda_floor` 本参数控制S形函数（sigmoid-like function）在模拟阶梯函数（floor function）时的斜度。
+- `--lamda_input <value>` 本参数控制在模型输入体素化（voxelization）处S形函数（sigmoid-like function）的斜度。
+- `--lamda_conv <value>` 本参数控制在稀疏卷积的占用值（occupancy value）处S形函数（sigmoid-like function）的斜度。
+- `--lamda_output <value>` 本参数控制在模型输出反体素化（devoxelization）处S形函数（sigmoid-like function）的斜度。
+- `--lamda_floor <value>` 本参数控制S形函数（sigmoid-like function）在模拟阶梯函数（floor function）时的斜度。
 
 ### 评估
 
