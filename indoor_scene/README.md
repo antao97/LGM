@@ -21,9 +21,7 @@ Here we provide an installation example in this [link](INSTALL.md).
 
 ## ScanNet Dataset
 
-### Preparation
-
-#### Dataset
+### Dataset
 
 1. Download the ScanNet dataset from the [official website](http://kaldir.vc.in.tum.de/scannet_benchmark/documentation). You need to sign the terms of use.
 2. Preprocess all the raw point clouds with the following command after you set the path correctly. You need to change the paths for `SCANNET_RAW_PATH` and `SCANNET_OUT_PATH` in `lib/datasets/preprocessing/scannet.py`.
@@ -32,7 +30,7 @@ Here we provide an installation example in this [link](INSTALL.md).
 python -m lib.datasets.preprocessing.scannet
 ``` 
 
-#### Model
+### Model
 
 In our work, we adopt the Mink16UNet34C	model with 2cm voxel size and 5 conv1 kernels in the [model zoo](https://github.com/chrischoy/SpatioTemporalSegmentation#model-zoo). The trained model `MinkUNet34C-train-conv1-5.pth` can be downloaded [here](https://node1.chrischoy.org/data/publications/minknet/MinkUNet34C-train-conv1-5.pth). Please place it under `weights/` folder.
 
@@ -107,9 +105,7 @@ Because we have modified some mistakes in our codes, the attack performance with
 
 ## Stanford 3D Dataset (S3DIS)
 
-### Preparation
-
-#### Dataset
+### Dataset
 
 1. Download the Stanford 3D (S3DIS) dataset from the [official website](http://buildingparser.stanford.edu/dataset.html). You need to sign the terms of use.
 2. Preprocess all the raw point clouds with the following command after you set the path correctly. You need to change the paths for `STANFORD_3D_IN_PATH` and `STANFORD_3D_OUT_PATH` in `lib/datasets/preprocessing/stanford.py`.
@@ -118,7 +114,7 @@ Because we have modified some mistakes in our codes, the attack performance with
 python -m lib.datasets.preprocessing.stanford
 ``` 
 
-#### Model
+### Model
 
 In our work, we adopt the Mink16UNet34 model with 5cm voxel size and 5 conv1 kernels in the [model zoo](https://github.com/chrischoy/SpatioTemporalSegmentation#model-zoo). The trained model `Mink16UNet34-stanford-conv1-5.pth` can be downloaded [here](https://node1.chrischoy.org/data/publications/minknet/Mink16UNet34-stanford-conv1-5.pth). Please place it under `weights/` folder.
 

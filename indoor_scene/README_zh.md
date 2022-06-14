@@ -21,9 +21,7 @@
 
 ## ScanNet数据集
 
-### 前期准备
-
-#### 数据集
+### 数据集
 
 1. 从[官方网站](http://kaldir.vc.in.tum.de/scannet_benchmark/documentation)下载ScanNet数据集，你需要同意ScanNet数据集使用须知。
 2. 使用下面命令去处理所有原始点云数据。在运行前你需要在`lib/datasets/preprocessing/scannet.py`文件中修改`SCANNET_RAW_PATH`和`SCANNET_OUT_PATH`的路径。
@@ -32,7 +30,7 @@
 python -m lib.datasets.preprocessing.scannet
 ``` 
 
-#### 模型
+### 模型
 
 在本工作中，我们在[模型库](https://github.com/chrischoy/SpatioTemporalSegmentation#model-zoo)中选择使用2厘米体素和conv1卷积核大小为5的Mink16UNet34C模型，在[这里](https://node1.chrischoy.org/data/publications/minknet/MinkUNet34C-train-conv1-5.pth)可以下载训练好的模型`MinkUNet34C-train-conv1-5.pth`，模型下载后请将其放置在`weights/`文件夹内。
 
@@ -107,9 +105,7 @@ python eval_scannet.py --data_path=<data path> --attacked_coords=<coord path>
 
 ## Stanford 3D数据集（S3DIS）
 
-### 前期准备
-
-#### 数据集
+### 数据集
 
 1. 从[官方网站](http://buildingparser.stanford.edu/dataset.html)下载Stanford 3D数据集，你需要同意Stanford 3D数据集使用须知。
 2. 使用下面命令去处理所有原始点云数据。在运行前你需要在`lib/datasets/preprocessing/stanford.py`文件中修改`STANFORD_3D_IN_PATH`和`STANFORD_3D_OUT_PATH`的路径。
@@ -118,7 +114,7 @@ python eval_scannet.py --data_path=<data path> --attacked_coords=<coord path>
 python -m lib.datasets.preprocessing.stanford
 ``` 
 
-#### 模型
+### 模型
 
 在本工作中，我们在[模型库](https://github.com/chrischoy/SpatioTemporalSegmentation#model-zoo)中选择使用5厘米体素和conv1卷积核大小为5的Mink16UNet34模型，在[这里](https://node1.chrischoy.org/data/publications/minknet/Mink16UNet34-stanford-conv1-5.pth)可以下载训练好的模型`Mink16UNet34-stanford-conv1-5.pth`，模型下载后请将其放置在`weights/`文件夹内。
 
