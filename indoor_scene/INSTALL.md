@@ -1,5 +1,7 @@
 # An Installation Example
 
+[[中文版]](INSTALL_zh.md)
+
 Here we list the packages we use in our CentOS 7.8.2003 system:
 
 - CUDA 10.1 (cudatoolkit 10.1.243)
@@ -30,7 +32,7 @@ conda install mkl-include==2021.2.0
 conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
 ``` 
 
-4. Download the 0.4.3 version of Minkowski Engine from this [link](https://github.com/NVIDIA/MinkowskiEngine/archive/refs/tags/v0.4.3.zip) and unzip it. Then use the following commands.
+4. Download the 0.4.3 version of Minkowski Engine in `.zip` format from this [link](https://github.com/NVIDIA/MinkowskiEngine/archive/refs/tags/v0.4.3.zip) and unzip it. Then use the following commands.
 
 ``` 
 cd MinkowskiEngine-0.4.3
@@ -46,4 +48,4 @@ pip install torch_scatter==2.0.7
 pip install open3d==0.9.0
 ```
 
-Make sure that you use the 0.9.0 version of open3d, otherwise you will encounter an error when you run the following commands.
+Make sure that you use the 0.9.0 version of open3d, otherwise you will encounter an error when you run the experiment.

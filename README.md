@@ -1,7 +1,9 @@
 # Leaded Gradient Method (LGM)
 
+[[中文版]](README_zh.md)
+
 <p float="left">
-    <img src="image/figure1.jpg" width="600"/>
+    <img src="image/figure1.jpg" width="700"/>
 </p>
 
 This repository contains the PyTorch implementation for paper **Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network**
@@ -12,7 +14,8 @@ This repository contains the PyTorch implementation for paper **Dynamics-aware A
 
 In this paper, we investigate the dynamics-aware adversarial attack problem in deep neural networks. Most existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process. However, this assumption does not hold for many recently proposed networks, e.g. 3D sparse convolution network, which contains input-dependent execution to improve computational efficiency. It results in a serious issue of lagged gradient, making the learned attack at the current step ineffective due to the architecture changes afterward. To address this issue, we propose a Leaded Gradient Method (LGM) and show the significant effects of the lagged gradient. 
 
-If you find our work useful in your research, please consider citing:
+If you find our work useful in your research, please consider citing our paper.
+
 ```
 @article{tao2021dynamicsaware,
   title={Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network},
@@ -26,10 +29,10 @@ If you find our work useful in your research, please consider citing:
 
 **Updates:** 
 
-- [2022/5/20] Add indoor scene code for semantic segmentation.
+- [2022/5/20] Add attack code for 3D point cloud indoor scene semantic segmentation.
 
 &nbsp;
 
 ## Contents
 
-- [Indoor Scene](indoor_scene/)
+- [3D Point Cloud Indoor Scene Segmentation](indoor_scene/)

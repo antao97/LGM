@@ -1,4 +1,10 @@
-# Attack of Indoor Scene Segmentation
+# Attack of 3D Point Cloud Indoor Scene Segmentation
+
+[[中文版]](README_zh.md)
+
+<p float="left">
+    <img src="visual.jpg" width="800"/>
+</p>
 
 This folder contains codes for the [ScanNet](http://kaldir.vc.in.tum.de/scannet_benchmark/documentation) and [Stanford (S3DIS)](http://buildingparser.stanford.edu/dataset.html) datasets. The codes are built from [SpatioTemporalSegmentation](https://github.com/chrischoy/SpatioTemporalSegmentation).
 
@@ -20,7 +26,7 @@ Here we provide an installation example in this [link](INSTALL.md).
 #### Dataset
 
 1. Download the ScanNet dataset from the [official website](http://kaldir.vc.in.tum.de/scannet_benchmark/documentation). You need to sign the terms of use.
-2. Next, preprocess all the raw point clouds with the following command after you set the path correctly. You need to change the paths for `SCANNET_RAW_PATH` and `SCANNET_OUT_PATH` in `lib/datasets/preprocessing/scannet.py`.
+2. Preprocess all the raw point clouds with the following command after you set the path correctly. You need to change the paths for `SCANNET_RAW_PATH` and `SCANNET_OUT_PATH` in `lib/datasets/preprocessing/scannet.py`.
 
 ``` 
 python -m lib.datasets.preprocessing.scannet
@@ -52,7 +58,7 @@ You can add additional arguments at the end of the above command to control the 
 
 We recommend using `--save_coords` during the attack process. With the saved attacked point cloud coordinates, you can resume the attack using `--resume_path <resume path>`. Also, you can use the saved attacked point cloud coordinates to run the evaluation script `eval_scannet.py` in the next section.
 
-- `--resume_path <resume path>` Resume the attack with an experiment path. The format of the path is 'outputs/scannet/budget_<your budget>/<your exp name>'. You need to make sure that you have used `--save_coords` in the resumed attack.
+- `--resume_path <resume path>` Resume the attack with an experiment path. The format of the path is `outputs/scannet/budget_<your budget>/<your exp name>`. You need to make sure that you have used `--save_coords` in the resumed attack.
 
 ### Change Attack Parameters
 
@@ -68,6 +74,7 @@ If the attack budget lies in [0.005, 0.01, 0.02, 0.05], our script default loads
 ### Evaluation
 
 Use the following command to evaluate the model performance with unattacked point cloud coordinates.
+
 ```
 python eval_scannet.py --data_path <data path>
 ```
@@ -75,11 +82,12 @@ python eval_scannet.py --data_path <data path>
 Our script can reproduce 72.22% mIoU for `MinkUNet34C-train-conv1-5.pth` on the validation set.
 
 After the attack process. You can use the following command to evaluate the model performance with attacked point cloud coordinates in path `<coord path>`. The format of `<coord path>` is `outputs/scannet/budget_<your budget>/<your exp name>/coord`
+
 ```
 python eval_scannet.py --data_path=<data path> --attacked_coords=<coord path>
 ```
 
-Also, you can add additional arguments at the end of the above two commands to control the evaluation process:
+Also, you can add additional arguments at the end of the above two commands to control the evaluation process.
 
 - `--exp_name <name>` Assign an experiment name. Default is `Logs_<date>_<time>`.
 - `--save_preds` Whether to save the class prediction results. Default is `False`.
@@ -93,6 +101,8 @@ Also, you can add additional arguments at the end of the above two commands to c
 | FGM | 60.44 | 55.51 | 38.65 | 8.70 | 
 | LGM | **25.79** | **11.51** | **5.76** | **3.83** | 
 
+Because we have modified some mistakes in our codes, the attack performance with the codes in this repo can be slightly better than the reported performance above in our paper. 
+
 &nbsp;
 
 ## Stanford 3D Dataset (S3DIS)
@@ -102,7 +112,7 @@ Also, you can add additional arguments at the end of the above two commands to c
 #### Dataset
 
 1. Download the Stanford 3D (S3DIS) dataset from the [official website](http://buildingparser.stanford.edu/dataset.html). You need to sign the terms of use.
-2. Next, preprocess all the raw point clouds with the following command after you set the path correctly. You need to change the paths for `STANFORD_3D_IN_PATH` and `STANFORD_3D_OUT_PATH` in `lib/datasets/preprocessing/stanford.py`.
+2. Preprocess all the raw point clouds with the following command after you set the path correctly. You need to change the paths for `STANFORD_3D_IN_PATH` and `STANFORD_3D_OUT_PATH` in `lib/datasets/preprocessing/stanford.py`.
 
 ``` 
 python -m lib.datasets.preprocessing.stanford
@@ -115,6 +125,7 @@ In our work, we adopt the Mink16UNet34 model with 5cm voxel size and 5 conv1 ker
 ### Start Attack
 
 Use the following command to attack with an assigned budget `<budget>`. The data path `<data path>` is `STANFORD_3D_OUT_PATH`.
+
 ```
 python adv_stanford.py --data_path <data path> --budget <budget> 
 ``` 
@@ -134,7 +145,7 @@ You can add additional arguments at the end of the above command to control the 
 
 We recommend using `--save_coords` during the attack process. With the saved attacked point cloud coordinates, you can resume the attack using `--resume_path <resume path>`. Also, you can use the saved attacked point cloud coordinates to run the evaluation script `eval_stanford.py` in the next section.
 
-- `--resume_path <resume path>` Resume the attack with an experiment path. The format of the path is 'outputs/stanford/budget_<your budget>/<your exp name>'. You need to make sure that you have used `--save_coords` in the resumed attack.
+- `--resume_path <resume path>` Resume the attack with an experiment path. The format of the path is `outputs/stanford/budget_<your budget>/<your exp name>`. You need to make sure that you have used `--save_coords` in the resumed attack.
 
 ### Change Attack Parameters
 
@@ -146,11 +157,12 @@ If the attack budget lies in [0.005, 0.01, 0.02, 0.05], our script default loads
 - `--lamda_input` This parameter controls the slop of the sigmoid-like function in input voxelization.
 - `--lamda_conv` This parameter controls the slop of the sigmoid-like function in the occupancy value in sparse convolution.
 - `--lamda_output` This parameter controls the slop of the sigmoid-like function in output devoxelization.
-- `--lamda_floor` This parameter controls the slop of the sigmoid-like function to mimic the floor operation.
+- `--lamda_floor` This parameter controls the slop of the sigmoid-like function to mimic the floor function.
 
 ### Evaluation
 
 Use the following command to evaluate the model performance with unattacked point cloud coordinates.
+
 ```
 python eval_stanford.py --data_path <data path>
 ```
@@ -158,11 +170,12 @@ python eval_stanford.py --data_path <data path>
 Our script can reproduce 65.47% mIoU for `Mink16UNet34-stanford-conv1-5.pth` on area 5.
 
 After the attack process. You can use the following command to evaluate the model performance with attacked point cloud coordinates in path `<coord path>`. The format of `<coord path>` is `outputs/stanford/budget_<your budget>/<your exp name>/coord`
+
 ```
 python eval_stanford.py --data_path=<data path> --attacked_coords=<coord path>
 ```
 
-Also, you can add additional arguments at the end of the above two commands to control the evaluation process:
+Also, you can add additional arguments at the end of the above two commands to control the evaluation process.
 
 - `--exp_name <name>` Assign an experiment name. Default is `Logs_<date>_<time>`.
 - `--area <id>` The area to use in the evaluation. Default is `5`.
@@ -176,3 +189,5 @@ Also, you can add additional arguments at the end of the above two commands to c
 | :---: | :---: | :---: | :---: | :---: | 
 | FGM | 57.53 | 52.35 | 45.24 | 21.21 | 
 | LGM | **48.20** | **39.65** | **30.93** | **7.45** | 
+
+Because we have modified some mistakes in our codes, the attack performance with the codes in this repo can be slightly better than the reported performance above in our paper. 

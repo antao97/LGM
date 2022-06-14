@@ -65,7 +65,7 @@ parser.add_argument('--lamda_conv', type=float, default=None,
 parser.add_argument('--lamda_output', type=float, default=None,
                     help='This parameter controls the slop of the sigmoid-like function in output devoxelization.')
 parser.add_argument('--lamda_floor', type=float, default=None,
-                    help='This parameter controls the slop of the sigmoid-like function to mimic the floor operation.')
+                    help='This parameter controls the slop of the sigmoid-like function to mimic the floor function.')
 
 ### Evaluation Settings
 parser.add_argument('--area', type=str, default='5', choices=['1', '2', '3', '4', '5', '6'],
