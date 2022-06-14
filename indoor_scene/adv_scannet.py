@@ -1,19 +1,29 @@
-"""
+''' Attack script for the ScanNet dataset
 
 Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network
 
-@Author: 
-    An Tao,
-    Pengliang Ji
+Author: An Tao, Pengliang Ji
+Email: ta19@mails.tsinghua.edu.cn, jpl1723@buaa.edu.cn
+Date: 2022/1/13
 
-@Contact: 
-    ta19@mails.tsinghua.edu.cn, 
-    jpl1723@buaa.edu.cn
-    
-@Time: 
-    2022/1/23 9:32 PM
+Required Inputs:
+    --data_path (str): Data path to the dataset.
+    --budget (float): Attack budget in L_inf (maximum perturbation).
 
-"""
+Important Optional Inputs:
+    --exp_name (str): Assign an experiment name. Default is `Logs_<date>_<time>`.
+    --dynamics_aware (bool): Whether the attack is dynamics-aware. Default is `True`.
+    --save_coords (store_true): Whether to save attacked point cloud coordinates. Default is `False`.
+    --save_preds (store_true): Whether to save the class prediction results for the attacked network. Default is `False`.
+    --save_probs (store_true): Whether to save the probability values of classes for the attacked network. Default is `False`.
+    --resume_path (str): Resume the attack with an experiment path. The format of the path is `outputs/scannet/budget_<your budget>/<your exp name>`. 
+                            You need to make sure that you have used --save_coords in the resumed attack.
+    --visual (store_true): Whether to save the visualization results in `.ply` files. Default is `False`.
+
+Example Usage: 
+    python adv_scannet.py --data_path <data path> --budget <budget>
+
+''' 
 
 import os
 from datetime import datetime

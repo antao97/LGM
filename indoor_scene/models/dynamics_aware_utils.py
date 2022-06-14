@@ -1,19 +1,12 @@
-"""
+''' Utility of dynamics-aware convolution
 
 Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network
 
-@Author: 
-    An Tao,
-    Pengliang Ji
+Author: An Tao, Pengliang Ji
+Email: ta19@mails.tsinghua.edu.cn, jpl1723@buaa.edu.cn  
+Date: 2022/1/13
 
-@Contact: 
-    ta19@mails.tsinghua.edu.cn, 
-    jpl1723@buaa.edu.cn
-    
-@Time: 
-    2022/1/23 9:32 PM
-
-"""
+'''
 
 import torch
 import torch.nn.functional as F

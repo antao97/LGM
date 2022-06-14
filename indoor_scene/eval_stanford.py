@@ -1,19 +1,26 @@
-"""
+''' Evaluation script for the Stanford dataset (S3DIS)
 
-The Evaluation File for 3D Sparse Convolution Network
+Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network
 
-@Author: 
-    Ziyi Wu,
-    An Tao
+Author: Ziyi Wu, An Tao
+Email: dazitu616@gmail.com, ta19@mails.tsinghua.edu.cn 
+Date: 2022/1/13
 
-@Contact: 
-    dazitu616@gmail.com, 
-    ta19@mails.tsinghua.edu.cn
+Required Inputs:
+    --data_path (str): Data path to the dataset.
     
-@Time: 
-    2022/1/23 9:32 PM
+Important Optional Inputs:
+    --attacked_coords (str): Evaluate the model performance with attacked point cloud coordinates.
+            The format of path is `outputs/stanford/budget_<your budget>/<your exp name>/coord`.
+    --exp_name (str): Assign an experiment name. Default is `Logs_<date>_<time>`.
+    --save_preds (store_true): Whether to save the class prediction results. Default is `False`.
+    --save_probs (store_true): Whether to save the probability values of classes. Default is `False`.
+    --visual (store_true): Whether to save the visualization results in `.ply` files. Default is `False`.
 
-"""
+Example Usage: 
+    python eval_stanford.py --data_path <data path> 
+
+'''
 
 import os
 from datetime import datetime
@@ -105,7 +112,10 @@ if __name__ == '__main__':
 
             # Visualization
             if config.visual:
-                utils.visualize(config, room_name, None, preds_pcl, save_path)
+                if config.attacked_coords is None:
+                    utils.visualize(config, room_name, None, preds_pcl, save_path)
+                else:
+                    utils.visualize(config, room_name, None, preds_pcl, save_path, refine=True)
 
     intersection, union, target = \
         utils.intersectionAndUnion(

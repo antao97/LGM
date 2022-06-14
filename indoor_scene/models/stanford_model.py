@@ -1,19 +1,18 @@
-"""
+''' Modified model for dynamics-aware attack on the Stanford dataset (S3DIS)
 
 Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network
 
-@Author: 
-    An Tao,
-    Pengliang Ji
+Author: An Tao, Pengliang Ji
+Email: ta19@mails.tsinghua.edu.cn, jpl1723@buaa.edu.cn
+Date: 2022/1/13
 
-@Contact: 
-    ta19@mails.tsinghua.edu.cn, 
-    jpl1723@buaa.edu.cn
+Note:
+    1: There exist some bugs in MinkowskiEngine v0.4.3, so we cannot directly multiply occupancy values with sparse convolution results. 
+       We achieve this by constructing some functions to ensure the correctness. (See dynamics_aware_utils.py)
+    2: Beause Equation (20) is applied in devoxelization, we achieve this by not multiplying occupancy value on the final layer output of the network.
+       So we use the original self.final() forward function.  
 
-@Time: 
-    2022/1/23 9:32 PM
-
-"""
+'''
 
 import torch
 import torch.nn.functional as F
@@ -21,13 +20,6 @@ import MinkowskiEngine as ME
 import MinkowskiEngine.MinkowskiOps as me
 from models.res16unet import Res16UNet34
 from models.dynamics_aware_utils import conv_nosample, conv_downsample, conv_upample, fn_forward
-
-
-# Note:
-#   1: There exist some bugs in MinkowskiEngine v0.4.3, so we cannot directly multiply occupancy values with sparse convolution results. 
-#      We achieve this by constructing some functions to ensure the correctness.
-#   2: Beause Equation (20) is applied in devoxelization, we achieve this by not multiplying occupancy value on the final layer output of the network.
-#      So we use the original self.final() forward function.  
 
 
 def block_forward(block, x, occupy, real_num, stride=1):

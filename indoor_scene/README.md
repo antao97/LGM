@@ -34,7 +34,7 @@ In our work, we adopt the Mink16UNet34C	model with 2cm voxel size and 5 conv1 ke
 
 Use the following command to attack with an assigned budget `<budget>`. The data path `<data path>` is `SCANNET_OUT_PATH/train`.
 ```
-python adv_scannet.py --budget <budget> --data_path <data path>
+python adv_scannet.py --data_path <data path> --budget <budget>
 ``` 
 
 You need to use `CUDA_VISIBLE_DEVICES` to specify the GPU cards in the experiment, otherwise the script will use all GPU cards. For example, add `CUDA_VISIBLE_DEVICES=0,1,2,3` before the above command to use 4 GPU cards with card index `0,1,2,3`, or add `os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"` in your script.
@@ -116,7 +116,7 @@ In our work, we adopt the Mink16UNet34 model with 5cm voxel size and 5 conv1 ker
 
 Use the following command to attack with an assigned budget `<budget>`. The data path `<data path>` is `STANFORD_3D_OUT_PATH`.
 ```
-python adv_stanford.py --budget <budget> --data_path <data path>
+python adv_stanford.py --data_path <data path> --budget <budget> 
 ``` 
 
 You need to use `CUDA_VISIBLE_DEVICES` to specify the GPU cards in the experiment, otherwise the script will use all GPU cards. For example, add `CUDA_VISIBLE_DEVICES=0,1,2,3` before the above command to use 4 GPU cards with card index `0,1,2,3`, or add `os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"` in your script.
