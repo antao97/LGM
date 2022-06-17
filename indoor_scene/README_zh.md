@@ -3,7 +3,7 @@
 [[English]](README.md)
 
 <p float="left">
-    <img src="visual.jpg" width="800"/>
+    <img src="../image/indoor_scene.jpg" width="800"/>
 </p>
 
 本文件夹包括了[ScanNet](http://kaldir.vc.in.tum.de/scannet_benchmark/documentation)数据集和[Stanford (S3DIS)](http://buildingparser.stanford.edu/dataset.html)数据集的代码，代码依据[SpatioTemporalSegmentation](https://github.com/chrischoy/SpatioTemporalSegmentation)代码库建立。
