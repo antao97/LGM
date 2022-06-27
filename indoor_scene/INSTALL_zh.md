@@ -37,7 +37,6 @@ conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
 ``` 
 cd MinkowskiEngine-0.4.3
 python setup.py install --force_cuda --cuda_home <cuda path>
-
 ``` 
 
 5. 安装一些额外需要的包，命令如下。
