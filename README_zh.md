@@ -3,7 +3,7 @@
 [[English]](README.md)
 
 <p float="left">
-    <img src="image/figure1.png" width="700"/>
+    <img src="image/figure1.png" width="400"/>
 </p>
 
 本代码库包含了文章**Dynamics-aware Adversarial Attack of Adaptive Neural Networks**的PyTorch实现代码。
