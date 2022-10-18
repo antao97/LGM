@@ -3,7 +3,7 @@
 [[中文版]](README_zh.md)
 
 <p float="left">
-    <img src="image/figure1.jpg" width="700"/>
+    <img src="image/figure1.png" width="700"/>
 </p>
 
 This repository contains the PyTorch implementation for paper **Dynamics-aware Adversarial Attack of Adaptive Neural Networks**
