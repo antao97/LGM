@@ -6,22 +6,24 @@
     <img src="image/figure1.jpg" width="700"/>
 </p>
 
-This repository contains the PyTorch implementation for paper **Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network**
+This repository contains the PyTorch implementation for paper **Dynamics-aware Adversarial Attack of Adaptive Neural Networks**
 
-**Authors:** An Tao, Yueqi Duan, He Wang, Ziyi Wu, Pengliang Ji, Haowen Sun, Jie Zhou, Jiwen Lu
+**Authors:** An Tao, Yueqi Duan, Yingqi Wang, Jiwen Lu, Jie Zhou
 
-[[arxiv]](https://arxiv.org/abs/2112.09428)
+[[arxiv]](https://arxiv.org/abs/2210.08159) 
 
-In this paper, we investigate the dynamics-aware adversarial attack problem in deep neural networks. Most existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process. However, this assumption does not hold for many recently proposed networks, e.g. 3D sparse convolution network, which contains input-dependent execution to improve computational efficiency. It results in a serious issue of lagged gradient, making the learned attack at the current step ineffective due to the architecture changes afterward. To address this issue, we propose a Leaded Gradient Method (LGM) and show the significant effects of the lagged gradient. 
+In this paper, we investigate the dynamics-aware adversarial attack problem of adaptive neural networks. Most existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process. However, this assumption does not hold for many recently proposed adaptive neural networks, which adaptively deactivate unnecessary execution units based on inputs to improve computational efficiency. It results in a serious issue of lagged gradient, making the learned attack at the current step ineffective due to the architecture change afterward. To address this issue, we propose a Leaded Gradient Method (LGM) and show the significant effects of the lagged gradient. 
+
+Our conference preprint version is [here](https://arxiv.org/abs/2210.08159).
 
 If you find our work useful in your research, please consider citing our paper.
 
 ```
-@article{tao2021dynamicsaware,
-  title={Dynamics-aware Adversarial Attack of 3D Sparse Convolution Network},
-  author={Tao, An and Duan, Yueqi and Wang, He and Wu, Ziyi and Ji, Pengliang and Sun, Haowen and Zhou, Jie and Lu, Jiwen},
-  journal={arXiv preprint arXiv:2112.09428},
-  year={2021}
+@article{tao2022dynamicsaware,
+  title={Dynamics-aware Adversarial Attack of Adaptive Neural Networks},
+  author={Tao, An and Duan, Yueqi and Yingqi, Wang and Lu, Jiwen and Zhou, Jie},
+  journal={https://arxiv.org/abs/2210.08159},
+  year={2022}
 }
 ```
 
@@ -29,7 +31,8 @@ If you find our work useful in your research, please consider citing our paper.
 
 **Updates:** 
 
-- [2022/5/20] Add attack code for 3D point cloud indoor scene semantic segmentation.
+- [2022/10/17] The journal preprint version of this paper is available on arXiv.
+- [2022/05/20] Add attack code for 3D point cloud indoor scene semantic segmentation.
 
 &nbsp;
 
