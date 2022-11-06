@@ -1,4 +1,3 @@
-import lib.datasets.synthia as synthia
 import lib.datasets.stanford as stanford
 import lib.datasets.scannet as scannet
 
@@ -10,7 +9,6 @@ def add_datasets(module):
 
 
 add_datasets(stanford)
-add_datasets(synthia)
 add_datasets(scannet)
 
 
