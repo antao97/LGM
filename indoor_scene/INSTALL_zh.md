@@ -18,7 +18,7 @@
 
 对我们的系统安装这些包的步骤如下：
 
-1. 安装GCC 7.5并激活，我们推荐一个[中文教程](https://blog.csdn.net/Together_CZ/article/details/106279287)。激活后，使用`gcc -v`检查你的GCC版本是否正确。
+1. 安装GCC 7.5并激活，我们推荐一个[中文教程](https://blog.csdn.net/sinat_18697811/article/details/127448506)。激活后，使用`gcc -v`检查你的GCC版本是否正确。
 
 2. 从[这里](https://developer.nvidia.com/cuda-10.1-download-archive-update2?target_os=Linux&target_arch=x86_64&target_distro=CentOS&target_version=7&target_type=runfilelocal)下载CUDA 10.1并安装，如果你希望不使用`sudo`权限来安装，我们推荐一个[中文教程](https://blog.csdn.net/qq_35498453/article/details/110532839)。
 

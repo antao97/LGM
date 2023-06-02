@@ -19,11 +19,11 @@ parser.add_argument('--data_path', type=str,
                     default='/data3/antao/Documents/Datasets/'
                             'S3DIS_processed/',
                     help='Data path to the dataset.')
-parser.add_argument('--save_preds', default=False, action='store_true',
+parser.add_argument('--save_preds', action='store_true',
                     help='Whether to save point cloud coordinates. Default is False.')
-parser.add_argument('--save_probs', default=False, action='store_true',
+parser.add_argument('--save_probs', action='store_true',
                     help='Whether to save the class prediction results. Default is False.')
-parser.add_argument('--visual', default=False, action='store_true',
+parser.add_argument('--visual', action='store_true',
                     help='Whether to save the visualization results in `.ply` files. Default is False.')
 
 ### Model Settings
@@ -42,7 +42,7 @@ parser.add_argument('--budget', type=float, default=0.005,
                     help='Attack budget in L_inf (maximum perturbation).')
 parser.add_argument('--dynamics_aware', type=bool, default=True,
                     help='Whether the attack is dynamics-aware. Default is True.')
-parser.add_argument('--save_coords', default=False, action='store_true',
+parser.add_argument('--save_coords', action='store_true',
                     help='Whether to save attacked point cloud coordinates. Default is False.')
 parser.add_argument('--resume_path', type=str, default=None,
                     help='Resume the attack with an experiment path. The format of the path is \
