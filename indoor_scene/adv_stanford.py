@@ -107,8 +107,11 @@ num_devices = torch.cuda.device_count()
 io.cprint('Use {} GPU cards'.format(num_devices))
 
 # Define a model and load the weights
-model = Res16UNet34(6, 13, config).to(device)
+# model = Res16UNet34(6, 13, config).to(device)
 model_dict = torch.load(config.weights, map_location=device)
+# model.load_state_dict(model_dict['state_dict'])
+# model.eval()
+model = new_model.NewRes16UNet34(6, 13, config, dynamics_aware=False).to(device)
 model.load_state_dict(model_dict['state_dict'])
 model.eval()
 
@@ -208,6 +211,13 @@ room_num = len(all_rooms)
 num_classes = len(VALID_CLASS_NAMES)
 io.cprint('Stanford Class Number: {}'.format(num_classes))
 
+voxel_orig_total = 0
+voxel_dyn_total = 0
+flops_orig = 0
+flops_orig_total = 0
+flops_dyn = 0
+flops_dyn_total = 0
+
 # Start attack for each room
 for i, room_name in enumerate(all_rooms):
     coords_pcl = None
@@ -243,7 +253,8 @@ for i, room_name in enumerate(all_rooms):
                 coords_pcl0 = coords_pcl.clone()
 
             sinput_orig = sinput_orig.to(device)
-            soutput_orig = model(sinput_orig)
+            # soutput_orig = model(sinput_orig)
+            soutput_orig, flops_orig = model(sinput_orig, sinput_orig.C.shape[0], torch.ones(sinput_orig.C.shape[0]).unsqueeze(0).to(device))
             preds_vol_orig = soutput_orig.F.max(1)[1].cpu().numpy()
             preds_pcl_orig = preds_vol_orig[inverse_idx]
             if config.save_probs:
@@ -305,7 +316,7 @@ for i, room_name in enumerate(all_rooms):
                 with torch.cuda.device('cuda:6'):
                     interm_7 = new_model_7(interm_6)
                 with torch.cuda.device('cuda:7'):
-                    soutput = new_model_8(interm_7)
+                    soutput, flops_dyn = new_model_8(interm_7)
 
             elif num_devices >= 4:
                 interm_1 = new_model_1(sinput, idx.shape[0], occupy_conv)
@@ -314,17 +325,18 @@ for i, room_name in enumerate(all_rooms):
                 with torch.cuda.device('cuda:2'):
                     interm_3 = new_model_3(interm_2)
                 with torch.cuda.device('cuda:3'):
-                    soutput = new_model_4(interm_3)
+                    soutput, flops_dyn = new_model_4(interm_3)
 
             elif num_devices >= 2:
                 interm = new_model_1(sinput, idx.shape[0], occupy_conv)
                 with torch.cuda.device('cuda:1'):
-                    soutput = new_model_2(interm)
+                    soutput, flops_dyn = new_model_2(interm)
 
             else:
-                soutput = new_model(sinput, idx.shape[0], occupy_conv)
+                soutput, flops_dyn = new_model(sinput, idx.shape[0], occupy_conv)
         else:
-            soutput = model(sinput)
+            # soutput = model(sinput)
+            soutput, flops_orig = model(sinput, sinput.C.shape[0], torch.ones(sinput.C.shape[0]).unsqueeze(0).to(device))
         
         outputs_pcl = utils.get_point_output(config, soutput, inverse_idx, coords_vol, coords_pcl, valid)
         preds_pcl = outputs_pcl.max(1)[1].cpu().numpy()
@@ -351,6 +363,17 @@ for i, room_name in enumerate(all_rooms):
             coords_pcl = torch.where(coords_pcl < (coords_pcl0 - config.budget), coords_pcl0 - config.budget, coords_pcl)
             coords_pcl = torch.where(coords_pcl > (coords_pcl0 + config.budget), coords_pcl0 + config.budget, coords_pcl)
 
+        voxel_orig_total += sinput_orig.C.shape[0]
+        voxel_dyn_total += sinput.C.shape[0]
+        flops_orig_total += flops_orig
+        flops_dyn_total += flops_dyn
+
+        if iter == (config.iter_num - 1):
+            io.cprint('Room: {:>3}/{:>3}  |  AVG Sparse Voxels: [Original Conv] {:.4F}K, [Dyn-aware Conv] {:.4F}K'\
+                .format(i, room_num, voxel_orig_total/config.iter_num/10**3, voxel_dyn_total/config.iter_num/10**3))
+            io.cprint('Room: {:>3}/{:>3}  |  AVG GFLOPs: [Original Conv] {:.4F}, [Dyn-aware Conv] {:.4F}'\
+                .format(i, room_num, flops_orig_total/config.iter_num/10**9, flops_dyn_total/config.iter_num/10**9))
+
         torch.cuda.empty_cache()
 
     
@@ -359,6 +382,8 @@ for i, room_name in enumerate(all_rooms):
         io.cprint('=> Resume Room: {:>2}/{:>2}  Attacked mIoU: [Original Conv] {:.4F}\n'.format(i, room_num, mIoU_orig_best))
     else:
         io.cprint('=> Attack Finished!  mIoU: [Original Conv] {:.4F} -> {:.4F}\n'.format(mIoU_orig0, mIoU_orig_best))
+        io.cprint('=> AVG Sparse Voxels: [Original Conv] {:.4F}K, [Dyn-aware Conv] {:.4F}K'.format(voxel_orig_total/(i+1)/config.iter_num/10**3, voxel_dyn_total/(i+1)/config.iter_num/10**3))
+        io.cprint('=> AVG GFLOPs: [Original Conv] {:.4F}, [Dyn-aware Conv] {:.4F}\n'.format(flops_orig_total/(i+1)/config.iter_num/10**9, flops_dyn_total/(i+1)/config.iter_num/10**9))
 
     # Save results
     preds_pcl_all = np.hstack([preds_pcl_all, preds_pcl_orig_best]) if \
@@ -376,7 +401,7 @@ for i, room_name in enumerate(all_rooms):
     if config.visual:
         utils.visualize(config, room_name, coords_pcl0.detach().numpy(), labels_pcl, save_path, remark='gt')
         utils.visualize(config, room_name, coords_pcl0.detach().numpy(), preds_pcl_orig0, save_path, remark='noattack')
-        utils.visualize(config, room_name, coords_pcl.detach().numpy(), preds_pcl_orig_best, save_path, remark='attack', refine=True)
+        utils.visualize(config, room_name, coords_pcl.detach().numpy(), preds_pcl_orig_best, save_path, remark='attack')
 
 # Calculate final performance
 intersection, union, target = \

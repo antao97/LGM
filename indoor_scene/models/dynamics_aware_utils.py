@@ -26,9 +26,9 @@ from MinkowskiCoords import CoordsManager
 
 def conv_flops(flops, kernel_map, conv, out_size):
     for i in range(len(kernel_map[0])):
-        flops += len(kernel_map[0][i]) * conv.in_channels * 2
+        flops += len(kernel_map[0][i]) * conv.in_channels * 2 * conv.out_channels
     if conv.bias is None:
-        flops -= out_size
+        flops -= out_size * conv.out_channels
     return flops
 
 

@@ -206,6 +206,13 @@ room_num = len(all_rooms)
 num_classes = len(VALID_CLASS_NAMES)
 io.cprint('ScanNet Class Number: {}'.format(num_classes))
 
+voxel_orig_total = 0
+voxel_dyn_total = 0
+flops_orig = 0
+flops_orig_total = 0
+flops_dyn = 0
+flops_dyn_total = 0
+    
 # Start attack for each room
 for i, room_name in enumerate(all_rooms):
     coords_pcl = None
@@ -213,12 +220,6 @@ for i, room_name in enumerate(all_rooms):
     probs_pcl_orig_best = None
     coords_pcl_best = None
     mIoU_orig_best = 100
-    voxel_orig_total = 0
-    voxel_dyn_total = 0
-    flops_orig = 0
-    flops_orig_total = 0
-    flops_dyn = 0
-    flops_dyn_total = 0
 
     load_attacked_coords = False
     if config.resume_path is not None:
