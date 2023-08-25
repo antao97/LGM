@@ -3,7 +3,7 @@
 [[中文版]](README_zh.md)
 
 <p float="left">
-    <img src="image/figure1.png" width="400"/>
+    <img src="img/figure1.png" width="400"/>
 </p>
 
 This repository contains the PyTorch implementation for paper **Dynamics-aware Adversarial Attack of Adaptive Neural Networks**
@@ -31,6 +31,7 @@ If you find our work useful in your research, please consider citing our paper.
 
 **Updates:** 
 
+- [2023/06/20] Add attack code for 3D point cloud outdoor scene semantic segmentation.
 - [2022/10/17] The journal preprint version of this paper is available on arXiv.
 - [2022/05/20] Add attack code for 3D point cloud indoor scene semantic segmentation.
 
@@ -38,4 +39,5 @@ If you find our work useful in your research, please consider citing our paper.
 
 ## Contents
 
-- [3D Point Cloud Indoor Scene Segmentation](indoor_scene/)
+- [3D Point Cloud Indoor Scene Segmentation](3D/indoor_scene/)
+- [3D Point Cloud Outdoor Scene Segmentation](3D/outdoor_scene/)

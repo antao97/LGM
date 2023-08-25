@@ -3,7 +3,7 @@
 [[English]](README.md)
 
 <p float="left">
-    <img src="image/figure1.png" width="400"/>
+    <img src="img/figure1.png" width="400"/>
 </p>
 
 本代码库包含了文章**Dynamics-aware Adversarial Attack of Adaptive Neural Networks**的PyTorch实现代码。
@@ -31,6 +31,7 @@
 
 **更新：** 
 
+- [2023/06/20] 增加三维点云室外场景分割的攻击代码。
 - [2022/10/17] 论文的期刊预印版本可以在arXiv上预览了。
 - [2022/05/20] 增加三维点云室内场景分割的攻击代码。
 
@@ -38,4 +39,5 @@
 
 ## 内容
 
-- [三维点云室内场景分割](indoor_scene/)
+- [三维点云室内场景分割](3D/indoor_scene/)
+- [三维点云室外场景分割](3D/outdoor_scene/)
