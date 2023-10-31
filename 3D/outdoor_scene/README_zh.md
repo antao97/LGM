@@ -3,7 +3,7 @@
 [[English]](README.md)
 
 <p float="left">
-    <img src="../../img/kitti.png" width="800"/>
+    <img src="../../img/outdoor.jpg" width="800"/>
 </p>
 
 本文件夹包括了[SemanticKITTI](http://www.semantic-kitti.org/)数据集的代码，代码依据[Cylinder3D](https://github.com/xinge008/Cylinder3D)代码库建立。

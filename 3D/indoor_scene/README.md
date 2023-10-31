@@ -3,7 +3,7 @@
 [[中文版]](README_zh.md)
 
 <p float="left">
-    <img src="../../img/indoor_scene.png" width="800"/>
+    <img src="../../img/indoor.jpg" width="800"/>
 </p>
 
 This folder contains codes for the [ScanNet](http://kaldir.vc.in.tum.de/scannet_benchmark/documentation) and [Stanford (S3DIS)](http://buildingparser.stanford.edu/dataset.html) datasets. The codes are built from [SpatioTemporalSegmentation](https://github.com/chrischoy/SpatioTemporalSegmentation).

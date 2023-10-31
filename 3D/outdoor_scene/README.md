@@ -3,7 +3,7 @@
 [[中文版]](README_zh.md)
 
 <p float="left">
-    <img src="../../img/kitti.png" width="800"/>
+    <img src="../../img/outdoor.jpg" width="800"/>
 </p>
 
 This folder contains codes for the [SemanticKITTI](http://www.semantic-kitti.org/) datasets. The codes are built from [Cylinder3D](https://github.com/xinge008/Cylinder3D).
