@@ -7,6 +7,7 @@
 </p>
 
 本文件夹包含了[SkipNet](https://github.com/ucbdrive/skipnet/)和[DynConv](https://github.com/thomasverelst/dynconv)的攻击代码。
+
 &nbsp;
 
 ## 运行需求
@@ -20,6 +21,8 @@ conda env create -f environment.yml
 conda activate dyn_attack
 ``` 
 
+&nbsp;
+
 ## 数据集
 
 CIFAR-10数据集将在运行代码时自动下载。
@@ -32,6 +35,8 @@ data/val/
       |--n01443537/
       |--...
 ```
+
+&nbsp;
 
 ## 模型
 
@@ -119,9 +124,13 @@ python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --t
 - `--resnet <type>`：指定ResNet类型，例如`--resnet 32`
 - `--save`：保存攻击结果
 
+&nbsp;
+
 ## 分析
 
 运行`analysis.py`绘图热力图和T-SNE结果。
+
+&nbsp;
 
 ## LGM的Lambda参数
 ### 单步攻击（FGSM）

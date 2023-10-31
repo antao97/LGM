@@ -7,6 +7,7 @@
 </p>
 
 This folder contains codes for the attacks of [SkipNet](https://github.com/ucbdrive/skipnet/) and [DynConv](https://github.com/thomasverelst/dynconv). 
+
 &nbsp;
 
 ## Requirements
@@ -20,6 +21,8 @@ conda env create -f environment.yml
 conda activate dyn_attack
 ``` 
 
+&nbsp;
+
 ## Datasets
 
 CIFAR-10 dataset will be downloaded automatically when running the code.
@@ -32,6 +35,8 @@ data/val/
       |--n01443537/
       |--...
 ```
+
+&nbsp;
 
 ## Models
 
@@ -119,9 +124,13 @@ Other arguments:
 - `--resnet <type>`: Specify resnet type when attacking ResNet, for example `--resnet 32`
 - `--save`: Save attack results
 
+&nbsp;
+
 ## Analysis
 
 Run `analysis.py` to draw heatmap and T-SNE results.
+
+&nbsp;
 
 ## Lambda of LGM
 ### Single Step Attack (FGSM)
