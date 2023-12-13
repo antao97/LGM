@@ -105,7 +105,7 @@ python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --t
 python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --type lgm --eps <epsilon> --batch_size <batch size> --n_iter <iter> --mask_rate <mask rate> --loss cw -adam --lamb <lamb>
 ``` 
 
-### APGD attack
+### AutoAttack
 - FGM
 
 ``` 
@@ -154,7 +154,7 @@ Run `analysis.py` to draw heatmap and T-SNE results.
 
 - CIFAR-10 with valid pixel 5%
 
-| Model | BIM | PGD | CW | APGD | BIM (Targeted) | PGD (Targeted) | CW (Targeted) | APGD (Targeted) | 
+| Model | BIM | PGD | CW | AutoAttack | BIM (Targeted) | PGD (Targeted) | CW (Targeted) | AutoAttack (Targeted) | 
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
 | SkipNet | 5 | 5 | 35 | 5 | 5 | 5 | 30 | 5 | 
 | DynConv | 10 | 10 | 45 | 10 | 10 | 10 | 45 | 10 | 

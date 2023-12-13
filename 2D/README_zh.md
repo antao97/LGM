@@ -105,7 +105,7 @@ python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --t
 python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --type lgm --eps <epsilon> --batch_size <batch size> --n_iter <iter> --mask_rate <mask rate> --loss cw -adam --lamb <lamb>
 ``` 
 
-### APGD攻击
+### AutoAttack
 - FGM
 
 ``` 
@@ -154,7 +154,7 @@ python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --t
 
 - CIFAR-10，有效pixel为5%
 
-| 模型 | BIM | PGD | CW | APGD | BIM (Targeted) | PGD (Targeted) | CW (Targeted) | APGD (Targeted) | 
+| 模型 | BIM | PGD | CW | AutoAttack | BIM (Targeted) | PGD (Targeted) | CW (Targeted) | AutoAttack (Targeted) | 
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
 | SkipNet | 5 | 5 | 35 | 5 | 5 | 5 | 30 | 5 | 
 | DynConv | 10 | 10 | 45 | 10 | 10 | 10 | 45 | 10 | 
