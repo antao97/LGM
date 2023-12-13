@@ -109,13 +109,13 @@ python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --t
 - FGM
 
 ``` 
-python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --type fgm --eps <epsilon> --batch_size <batch size> --n_iter <iter> --mask_rate <mask rate> -auto_lr -pgd
+python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --type fgm --eps <epsilon> --batch_size <batch size> --n_iter <iter> --mask_rate <mask rate> -auto_lr 
 ``` 
 
 - LGM
 
 ``` 
-python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --type lgm --eps <epsilon> --batch_size <batch size> --n_iter <iter> --mask_rate <mask rate> -auto_lr -pgd --lamb <lamb>
+python attack.py --model <skipnet|dynconv|resnet> --dataset <cifar|imagenet> --type lgm --eps <epsilon> --batch_size <batch size> --n_iter <iter> --mask_rate <mask rate> -auto_lr --lamb <lamb>
 ``` 
 
 其他参数：
