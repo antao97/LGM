@@ -280,7 +280,8 @@ def add_occupancy(config, inverse_idx, coords_vox_noextend, coords_pcl, coords_p
 
                 i = i + 1
     relation_input_list = torch.cat(relation_input_list, dim=0)
-    relation_conv_list = torch.cat(relation_conv_list, dim=0)
+    if config.dynamics_aware:
+        relation_conv_list = torch.cat(relation_conv_list, dim=0)
 
 
     ### Gathering Operation ###

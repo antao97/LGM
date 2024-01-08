@@ -85,7 +85,7 @@ if config.step is None:
 if config.lamda_input is None:
     io.cprint('Please give lamda for input with --lamda_input')
     lack_para = True
-if config.lamda_conv is None:
+if config.lamda_conv is None and config.dynamics_aware:
     io.cprint('Please give lamda for convolution with --lamda_conv')
     lack_para = True
 if config.lamda_output is None:
@@ -337,7 +337,7 @@ for i, room_name in enumerate(all_rooms):
                 soutput, flops_dyn = new_model(sinput, idx.shape[0], occupy_conv)
         else:
             # soutput = model(sinput)
-            soutput, flops_orig = new_model(sinput, sinput.C.shape[0], torch.ones(sinput.C.shape[0]).unsqueeze(0).to(device))
+            soutput, flops_orig = model(sinput, sinput.C.shape[0], torch.ones(sinput.C.shape[0]).unsqueeze(1).to(device))
         
         outputs_pcl = utils.get_point_output(config, soutput, inverse_idx, coords_vox, coords_pcl, valid)
         preds_pcl = outputs_pcl.max(1)[1].cpu().numpy()
