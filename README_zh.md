@@ -29,7 +29,7 @@
 
 **更新：** 
 
-- [2024/01/03] 我们的文章被IEEE Transactions on Circuits and Systems for Video Technology接收了！
+- [2024/01/04] 我们的文章被IEEE Transactions on Circuits and Systems for Video Technology接收了！
 - [2023/10/31] 增加二维图像分类模型的攻击代码。
 - [2023/06/20] 增加三维点云室外场景分割的攻击代码。
 - [2022/10/17] 论文的期刊预印版本可以在arXiv上预览了。

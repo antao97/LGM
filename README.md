@@ -29,7 +29,7 @@ If you find our work useful in your research, please consider citing our paper.
 
 **Updates:** 
 
-- [2024/01/03] Our paper is accepted by IEEE Transactions on Circuits and Systems for Video Technology!
+- [2024/01/04] Our paper is accepted by IEEE Transactions on Circuits and Systems for Video Technology!
 - [2023/10/31] Add attack code for 2D image classification.
 - [2023/06/20] Add attack code for 3D point cloud outdoor scene semantic segmentation.
 - [2022/10/17] The journal preprint version of this paper is available on arXiv.
