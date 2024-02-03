@@ -80,7 +80,7 @@ parameters = {
             'iter_num': 30, 
             'step': 0.0025, 
             'lamda_input': 10, 
-            'lamda_conv': 35, 
+            'lamda_conv': 25, 
             'lamda_output': 10
         },
         False: {
@@ -128,7 +128,7 @@ parameters = {
             'iter_num': 50, 
             'step': 0.01, 
             'lamda_input': 10, 
-            'lamda_conv': 35, 
+            'lamda_conv': 15, 
             'lamda_output': 10
         },
         False: {

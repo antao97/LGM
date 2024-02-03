@@ -17,11 +17,11 @@
 如果您发现我们的工作对您的研究有帮助，您可以考虑引用我们的论文。
 
 ```
-@article{tao2022dynamicsaware,
+@article{tao2024dynamicsaware,
   title={Dynamics-aware Adversarial Attack of Adaptive Neural Networks},
   author={Tao, An and Duan, Yueqi and Yingqi, Wang and Lu, Jiwen and Zhou, Jie},
-  journal={https://arxiv.org/abs/2210.08159},
-  year={2022}
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  year={2024}
 }
 ```
 
@@ -29,6 +29,7 @@
 
 **更新：** 
 
+- [2024/01/03] 我们的文章被IEEE Transactions on Circuits and Systems for Video Technology接收了！
 - [2023/10/31] 增加二维图像分类模型的攻击代码。
 - [2023/06/20] 增加三维点云室外场景分割的攻击代码。
 - [2022/10/17] 论文的期刊预印版本可以在arXiv上预览了。

@@ -17,11 +17,11 @@ In this paper, we investigate the dynamics-aware adversarial attack problem of a
 If you find our work useful in your research, please consider citing our paper.
 
 ```
-@article{tao2022dynamicsaware,
+@article{tao2024dynamicsaware,
   title={Dynamics-aware Adversarial Attack of Adaptive Neural Networks},
   author={Tao, An and Duan, Yueqi and Yingqi, Wang and Lu, Jiwen and Zhou, Jie},
-  journal={https://arxiv.org/abs/2210.08159},
-  year={2022}
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  year={2024}
 }
 ```
 
@@ -29,6 +29,7 @@ If you find our work useful in your research, please consider citing our paper.
 
 **Updates:** 
 
+- [2024/01/03] Our paper is accepted by IEEE Transactions on Circuits and Systems for Video Technology!
 - [2023/10/31] Add attack code for 2D image classification.
 - [2023/06/20] Add attack code for 3D point cloud outdoor scene semantic segmentation.
 - [2022/10/17] The journal preprint version of this paper is available on arXiv.
